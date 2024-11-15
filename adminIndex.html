@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+</head>
+<body>
+  <h1>Admin Login</h1>
+  <form id="login-form">
+    <input type="email" id="admin-email" placeholder="Email">
+    <button type="submit">Login</button>
+  </form>
+  <div id="otp-section" style="display:none;">
+    <input type="text" id="otp-input" placeholder="Enter OTP">
+    <button id="verify-otp">Verify</button>
+  </div>
+  <script>
+    document.getElementById("login-form").onsubmit = async function(event) {
+      event.preventDefault();
+      const response = await fetch('/api/admin/generate-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: document.getElementById("admin-email").value })
+      });
+      if (response.ok) {
+        alert("OTP sent to your email");
+        document.getElementById("otp-section").style.display = "block";
+      }
+    };
+
+    document.getElementById("verify-otp").onclick = async function() {
+      const response = await fetch('/api/admin/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: document.getElementById("admin-email").value,
+          otp: document.getElementById("otp-input").value
+        })
+      });
+      if (response.ok) {
+        alert("OTP verified, welcome admin!");
+        // Redirect to admin dashboard
+      }
+    };
+  </script>
+</body>
+</html>
