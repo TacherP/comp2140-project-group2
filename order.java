@@ -17,10 +17,16 @@ public class Order {
     }
 
     // Add item to order
+    //Stock Validation
     public void addItem(OrderItem item) {
-        this.orderItems.add(item);
-        updateItemQuantity();
-        calcPrice();
+        if (Inventory.getQuantityInStock(item.getProductID()) >= item.getQuantity()) {
+            this.orderItems.add(item);
+            updateItemQuantity();
+            calcPrice();
+            Inventory.updateStock(item.getProductID(), -item.getQuantity()); // Reduce stock
+        } else {
+            System.out.println("Insufficient stock for " + item.getProductName());
+        }
     }
 
     // Remove item from order
