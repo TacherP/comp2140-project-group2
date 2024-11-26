@@ -1,4 +1,5 @@
 //Class for customer object
+import java.util.*;
 
 public class Customer {
     private String customerID;
@@ -20,7 +21,10 @@ public class Customer {
 
     // Default Constructor
     public Customer() {
-        // Optional: Initialize with default values if necessary
+        this.firstName = "";
+        this.lastName ="";
+        this.email = "";
+        this.phone = "";
     }
 
     private String generateCustomerID() {
