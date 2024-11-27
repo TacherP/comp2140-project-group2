@@ -3,11 +3,11 @@ import java.util.*;
 
 
 public class Appointment{
-    private String appointmentID; //in the format A0001 so A + '0001'
-    private Customer customer; //CustomerID , firstName , lastName , email , phone , address 
+    private String appointmentID; 
+    private Customer customer; 
     private String date; 
-    private DateTimeSlot slot;  //Ask about this 
-    private String status; //Make this into an array list of [pending, confirmed, modified, cancelled]
+    private DateTimeSlot slot; 
+    private String status; 
 
 
     //Constructor to make an appointment 
@@ -48,6 +48,8 @@ public class Appointment{
         if (this.slot == slot){
            
             this.status = "Confirmed";
+            updateCalender();
+            sendConfirmation();
 
             System.out.println("Appointment confirmed");
         }
@@ -56,9 +58,8 @@ public class Appointment{
 
 
     public void sendConfirmation(){
-        String msg = "Thank you for confirming your appointment, " + customer.firstName + '!'; 
-        msg += "\nAppointment ID: " + getID();
-        msg += "\nDate $" + slot;
+        String msg = "Thank you for confirming your appointment, " + customer.getfirstName() + '!' 
+        + "\nAppointment ID: " + getID() +  "\nDate $" + slot;
 
         Integration.sendEmail(customer.getEmail(), "Appointment Confirmation", msg);
     }
@@ -96,12 +97,7 @@ public class Appointment{
     }
 
     public void updateCalender(){
-
-
-
-
-
-
+        calenderManager.addAppointment(this);
     }
 
 
