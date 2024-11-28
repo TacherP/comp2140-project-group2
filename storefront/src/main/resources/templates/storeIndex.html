@@ -1,0 +1,200 @@
+<!--HTML File for Store-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storefront</title>
+    <link rel="stylesheet" href="storeStyle.css">
+</head>
+<body>
+    <section>
+        <header class="header-bar-section">
+            <div class="logo">
+                <a href="../home_page/customerIndex.htm">
+                    <img src="images/white-circular-logo.png" alt="It's Oh Kay Wellness Logo"> <!-- Logo -->
+                </a>
+            </div>
+            <button class="menu-toggle">&#9776;</button> <!-- Hamburger Menu Icon -->
+            <nav>
+                <button class="close-toggle">&times;</button> <!-- Close Button -->
+                <a href="../services/services.html">Services</a>
+                <a href="../storefront/storeIndex.html">Shop</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#policies">Policies</a>
+                <a href="#cart">
+                    <div class="cart-icon">🛒</div>
+                </a>
+            </nav>
+        </header>
+    </section>
+    
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="carousel">
+            <div class="slides">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <div class="hero-content">
+                        <h1>Serenity in a Box</h1>
+                        <p>Curated collection of self-care packages designed to bring inner peace, comfort, and relaxation.</p>
+                        <a href="#" class="shop-now-btn">Shop Now</a>
+                    </div>
+                    <div class="hero-image">
+                        <img src="images/self-care-hero.jpg" alt="Self-Care Packages">
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="hero-image">
+                        <img src="images/candle-hero.jpg" alt="Image of candle">
+                    </div>
+                    <div class="hero-content">
+                        <h1>Gifts That Illuminate</h1>
+                        <p>Soothing scents and glowing lights. Bring the warmth of carefully curated candles, designed to brighten any space and uplift any spirit.</p>
+                        <a href="#" class="shop-now-btn">Shop Now</a>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <div class="hero-image">
+                        <img src="images/gift-card-hero.jpg" alt="Gift Card Image">
+                    </div>
+                    <div class="hero-content">
+                        <h1>Gift Peace!</h1>
+                        <p>The perfect way to give the gift of choice and tranquility. With selected gift cards, recipients can enjoy a relaxing massage and/or a relaxing shopping experience.</p>
+                        <a href="#" class="shop-now-btn">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation Buttons -->
+            <button class="prev-btn">&#10094;</button>
+            <button class="next-btn">&#10095;</button>
+        </div>
+    </header>
+
+<!-- Cart Modal / Container -->
+<div id="cartModal" class="cart-modal">
+    <div class="cart-content">
+        <h2>Your Cart</h2>
+        <ul id="cartList"></ul>
+        <div id="cartTotal"></div>
+        <button id="clearCart">Clear Cart</button>
+        <button id="checkout">Checkout</button>
+        <button class="close-cart">Close</button>
+    </div>
+</div>
+
+    <section class="categories">
+        <div class="category" style="background-image: url('images/smiling-woman-enjoys-beauty-home.jpg');">
+            <h2>For Her</h2>
+            <p>The perfect gift for any woman</p>
+            <a href="#" class="shop-now-btn">Shop Now</a>
+        </div>
+        <div class="category" style="background-image: url('images/smiling-man-applying-skin-care.jpg');">
+            <h2>For Him</h2>
+            <p>Crafted for greatness</p>
+            <a href="#" class="shop-now-btn">Shop Now</a>
+        </div>
+        <div class="category" style="background-image: url('images/selfcare-accessories.jpg');">
+            <h2>Accessories</h2>
+            <p>Crochet Trinket Holder & More</p>
+            <a href="#" class="shop-now-btn">Shop Now</a>
+        </div>
+    </section>
+
+    <section class="product-grid">
+        <h2>Featured Products</h2>
+        <div class="products">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="images/macadamia-soap.jpg" alt="Product image of massage soap">
+                <h3>Macadamia Massage Soap Bar</h3>
+                <p class="price">$1,500.00</p>
+            </div>
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="images/brush-dry-massage.jpg" alt="Product image for body brush">
+                <h3>Dry Brush</h3>
+                <p class="price">$2,000.00</p>
+            </div>
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="images/coffee-package.jpg" alt="Product image of coffee package">
+                <h3>All Things Coffee</h3>
+                <p class="price">$6,000.00</p>
+            </div>
+            <!-- Product 4 -->
+            <div class="product">
+                <img src="images/tea-cup.jpg" alt="Product image for custom tea cups">
+                <h4>Quoted Tea Cup</h4>
+                <p class="price">$2,000.00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Product Details -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img id="productImage" alt="Product image" style="max-width: 100%; margin-bottom: 1rem;" />
+        <h3 id="productName"></h3>
+        <p id="productDescription"></p>
+        <p class="price" id="productPrice"></p>
+        <button class="add-to-cart">Add to Cart</button>
+        <div class="modal-navigation">
+            <button class="prevv-btn">Prev</button>
+            <button class="nexxt-btn">Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- Checkout Pop-Up Modal -->
+<div id="checkoutModal" class="checkout-modal">
+    <div class="checkout-modal-content">
+        <span class="close-modal" id="closeModal">&times;</span>
+        
+        <h3>Checkout</h3>
+        
+        <!-- Form to collect customer details -->
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="addressLine1">Address Line 1</label>
+                <input type="text" id="addressLine1" name="addressLine1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="addressLine2">Address Line 2 (optional)</label>
+                <input type="text" id="addressLine2" name="addressLine2">
+            </div>
+
+            <button type="submit" id="placeOrderButton">Place Order</button>
+        </form>
+    </div>
+</div>
+
+    <script src="store.js"></script>
+</body>
+</html>

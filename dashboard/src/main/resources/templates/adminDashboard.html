@@ -1,0 +1,245 @@
+<!--html file for Admin Dashboard-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.2/main.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .sidebar {
+      height: 100vh;
+      background-color: #343a40;
+      color: #fff;
+      padding-top: 20px;
+    }
+
+    .sidebar a {
+      color: #ddd;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+    }
+
+    .sidebar a:hover {
+      background-color: #495057;
+      color: #fff;
+    }
+
+    .card {
+      margin: 15px 0;
+    }
+
+    .card .card-title {
+      margin-bottom: 0;
+    }
+
+    .dashboard-content {
+      padding: 20px;
+    }
+
+    .chart-container {
+      position: relative;
+      margin: auto;
+      height: 60%;
+      width: 60%;
+    }
+    #calendar{
+      width:80%;
+      height:80%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-2 sidebar">
+        <h3 class="text-center">Admin Dashboard</h3>
+        <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#" class="appointments-link"><i class="fas fa-calendar"></i> Appointments</a>
+        <a href="#" class="customers-link"><i class="fas fa-users"></i> Customers</a>
+        <a href="#"><i class="fas fa-boxes"></i> Inventory</a>
+        <a href="#"><i class="fas fa-chart-line"></i> Sales</a>
+        <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+        <a href="#" id="logoutButton"><i class="fas fa-sign-out-alt"></i> Log Out</a> <!-- Log Out Button -->
+        <button id="backButton">← Back</button>
+      </nav>
+
+      <div id="calendar" style="display:none;"></div> <!-- Calendar Container -->
+      <div id="inventory" style="display:none;">
+        <!-- Inventory Data will be shown here -->
+        <div id="inventoryList"></div>
+        <button id="addProductBtn">Add Product</button>
+      </div>
+
+      <!-- Main Content -->
+      <main class="col-md-10 dashboard-content">
+        <div class="row">
+          <!-- Today's Sales -->
+          <div class="col-md-3">
+            <div class="card text-white bg-primary">
+              <div class="card-body">
+                <h5 class="card-title">Today's Sales</h5>
+                <p class="card-text">$53,000</p>
+              </div>
+            </div>
+          </div>
+          <!-- Today's Users -->
+          <div class="col-md-3">
+            <div class="card text-white bg-success">
+              <div class="card-body">
+                <h5 class="card-title">Today's Users</h5>
+                <p class="card-text">3,200</p>
+              </div>
+            </div>
+          </div>
+          <!-- New Clients -->
+          <div class="col-md-3">
+            <div class="card text-white bg-warning">
+              <div class="card-body">
+                <h5 class="card-title">New Clients</h5>
+                <p class="card-text">+1,200</p>
+              </div>
+            </div>
+          </div>
+          <!-- New Orders -->
+          <div class="col-md-3">
+            <div class="card text-white bg-danger">
+              <div class="card-body">
+                <h5 class="card-title">New Orders</h5>
+                <p class="card-text">$13,200</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Add Services Form-->
+        <button type="button" class="btn btn-primary" onclick="toggleForm()">Add Service</button>
+        <div id="addServiceFormContainer" style="display: none; margin-top: 20px;">
+          <form id="addServiceForm">
+            <div class="mb-3">
+              <label for="serviceName" class="form-label">Service Name</label>
+              <input type="text" class="form-control" id="serviceName" required>
+            </div>
+            <div class="mb-3">
+              <label for="serviceDescription" class="form-label">Service Description</label>
+              <textarea class="form-control" id="serviceDescription" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="servicePrice" class="form-label">Service Price</label>
+              <input type="number" class="form-control" id="servicePrice" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Service</button>
+          </form>
+        </div>
+        
+
+        <!--Remove a Service (Modal)-->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeServiceModal">
+          Remove Service
+        </button>
+        <div class="modal fade" id="removeServiceModal" tabindex="-1" aria-labelledby="removeServiceModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="removeServiceModalLabel">Remove Service</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="removeServiceForm">
+                  <div class="mb-3">
+                    <label for="serviceIdToRemove" class="form-label">Service ID</label>
+                    <input type="text" class="form-control" id="serviceIdToRemove" placeholder="Enter Service ID to Remove" required>
+                  </div>
+                  <button type="submit" class="btn btn-danger">Remove Service</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trigger Modify Service Modal -->
+        <button type="button" class="btn btn-primary" id="modifyServiceButton" data-bs-toggle="modal" data-bs-target="#modifyServiceModal">
+          Modify Service
+        </button>
+        <!-- Modify Service Modal -->
+        <div class="modal fade" id="modifyServiceModal" tabindex="-1" aria-labelledby="modifyServiceModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modifyServiceModalLabel">Modify Service</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="modifyServiceForm">
+                  <div class="mb-3">
+                    <label for="serviceIdToModify" class="form-label">Service ID</label>
+                    <input type="text" class="form-control" id="serviceIdToModify" placeholder="Enter Service ID to Modify">
+                  </div>
+                  <div class="mb-3">
+                    <label for="serviceName" class="form-label">Service Name</label>
+                    <input type="text" class="form-control" id="serviceName" placeholder="Enter service name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="serviceDescription" class="form-label">Description</label>
+                    <textarea class="form-control" id="serviceDescription" rows="3" placeholder="Enter description"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="servicePrice" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="servicePrice" placeholder="Enter price">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveServiceButton">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="calendar"></div>
+
+        <!-- Charts Section -->
+        <div class="row">
+          <!-- Bar Chart -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Active Users</h5>
+                <canvas id="barChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <!-- Line Chart -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Sales Overview</h5>
+                <canvas id="lineChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!--HTML file for "Services"-->
+<!--Accessed from "Learn More" "Book Online Consultation" and "Services"-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="serviceStyle.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../home_page/customerIndex.htm">
+            <img src="images/white-circular-logo.png" alt="It's Oh Kay Wellness Logo">
+            </a>
+        </div>
+        <button class="toggle-btn">&#9776;</button> <!-- Hamburger Icon -->
+        <nav>
+            <button class="close-btn">&times;</button> <!-- Close Button -->
+            <a href="../services/services.html">Services</a>
+            <a href="../storefront/storeIndex.html">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a href="#policies">Policies</a>
+            <a href="#cart">
+                <div class="cart-icon">🛒</div>
+            </a>
+        </nav>
+    </header>
+
+    <section id="treatments" class="treatments">
+        <h1>Services</h1>
+        <p>Explore a wide range of treatments to meet your individual needs. From soothing Swedish and therapeutic massages targeted treatments like deep tissue, our skilled therapist focuses on relieving stress, alleviating pain, and restoring balance to your body.</p>
+        <p>We also offer a range of body treatments and aromatherpay sessions to nourish your skin and promote overall wellness.</p>
+        <p>Whether you're seeking relaxation, pain relief, or a refreshing escape, our therapist provide the perfect sanctuary for relaxation and self-care.</p>
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button data-filter="all" class="filter-btn selected">All Services</button>
+            <button data-filter="massage" class="filter-btn">Massages</button>
+            <button data-filter="stretch" class="filter-btn">Stretch Therapy</button>
+            <button data-filter="consultation" class="filter-btn">Consultation</button>
+        </div>
+
+        <!-- Service Items -->
+        <div class="service-list">
+            <div class="service-item">
+                <img src="images/aroma-therapy-massage.jpg" alt="Aromatherapy Massage">
+                <h2>Signature "Lotus" Aromatherapy Massage</h2>
+                <p>Enjoy pure blend essential oil blends & choose any essential oil from our collection to be diffused.</p>
+                <hr> <!-- Horizontal line added -->
+                <p> 1 hr 30 min</p>
+                <p> $12,000</p>
+                <button>Book Now</button>
+            </div>
+            <div class="service-item" data-category="massage">
+                <img src="images/half-body-aromatherapy.jpg" alt="Image of Facial and Neck Massage">
+                <h2>Half Body Aromatherapy Massage</h2>
+                <p>Smooth out tension from upper body.</p>
+                <hr> <!-- Horizontal line added -->
+                <p> 45 mins</p>
+                <p> $6,000</p>
+                <button class="book-btn">Book Now</button>
+            </div>
+            <div class="service-item" data-category="massage">
+                <img src="images/swedish-massage.jpg" alt="Swedish Massage">
+                <h2>Swedish Massage</h2>
+                <p>Experience a variety of Swedish techniques.</p>
+                <hr> <!-- Horizontal line added -->
+                <p> 1 hr</p>
+                <p> $9,000</p>
+                <button class="book-btn">Book Now</button>
+            </div>
+            <div class="service-item" data-category="stretch">
+                <img src="images/stretch-therapy.jpg" alt="Stretch Therapy">
+                <h2>Stretch Therapy</h2>
+                <p>Improve flexibility and reduce tension with Muscle Fibre Methodology.</p>
+                <hr> <!-- Horizontal line added -->
+                <p> 45 min</p>
+                <p> $7,000</p>
+                <button class="book-btn">Book Now</button>
+            </div>
+            <div class="service-item" data-category="consultation">
+                <img src="images/home-consultation.jpg" alt="Online Consultation">
+                <h2>Online Consultation</h2>
+                <p>Personalized plan for your health goals.</p>
+                <hr> <!-- Horizontal line added -->
+                <p> 15 min</p>
+                <p> $500</p>
+                <button class="book-btn">Book Now</button>
+            </div>
+        </div>
+
+        <div id="customer-form">
+            <h3>Enter Your Information</h3>
+            <form id="appointment-form">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required><br><br>
+        
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last-name" required><br><br>
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+        
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required><br><br>
+        
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address"><br><br>
+        
+                <button type="button" id="show-appointment-summary-btn">Show Appointment Summary</button>
+            </form>
+        </div>
+
+        <!-- Appointment Summary Modal -->
+         <div id="appointmentModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Appointment Summary</h2>
+                <p><strong>Service:</strong> <span id="service-name"></span></p>
+                <p><strong>Price:</strong> $<span id="service-price"></span></p>
+                <p><strong>Duration:</strong> <span id="service-duration"></span></p>
+                <button id="schedule-btn">Schedule Appointment</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="serviceScript.js"></script>
+</body>
+</html>
+

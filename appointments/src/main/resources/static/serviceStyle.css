@@ -1,0 +1,279 @@
+@font-face {
+    font-family: 'LEMONMILK';
+    src: url('font/LEMONMILK-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* General Reset */
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease; /* Smooth */
+}
+
+header.hidden {
+    top: -200px; /* Hide header */
+}
+
+.logo img {
+    height: 160px;
+}
+
+nav {
+    display: flex; /* Maintain horizontal alignment */
+    align-items: center; /* Vertically align links and icons */
+    gap: 15px; /* Add consistent spacing between navigation items */
+}
+
+nav a {
+    margin: 0 15px;
+    color: #00a86b;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 400;
+    transition: color 0.3s ease; /* Smooth transition for hover */
+}
+
+nav a:hover {
+    color: #004d33; /* Jade green on hover */
+}
+
+/* Cart Icon */
+.cart-icon {
+    width: 30px; /* Adjust cart icon size */
+    height: 30px;
+    order: 8; /* Default: Last in desktop layout */
+    display: inline-block; /* Ensure visibility */
+    color: #004d33;
+}
+
+/* Treatments Section */
+.treatments {
+    padding: 150px 50px 50px;
+    text-align: center;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.filter-buttons .filter-btn {
+    background: transparent;
+    border: 2px solid #006400;
+    color: #006400;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.filter-buttons .filter-btn:hover {
+    background-color: transparent;
+    color: #654321;
+    border-color: #654321;
+}
+
+.filter-buttons .filter-btn.selected {
+    background-color: #006400;
+    color: white;
+    border: 2px solid #006400;
+}
+
+/* Service Items */
+.service-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.service-item {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.service-item hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.service-item img {
+    width: 100%;
+    border-radius: 0px;
+}
+
+.service-item button {
+    margin-top: 15px;
+    background: transparent;
+    color: #006400;
+    border: 2px solid #006400;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.service-item button:hover {
+    background-color: #00c853;
+    color: white;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position to the screen */
+    z-index: 1; /* Sit on top of the page */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow:auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 30% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px; /* Modal width */
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#schedule-btn {
+    background-color: #00a86b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#schedule-btn:hover {
+    background-color: #006400;
+}
+
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* For mobile devices */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px 20px;
+        background-color: white;
+        z-index: 10;
+        transition: top 0.3s ease; /* Smooth show/hide on scroll */
+    }
+    
+    header.hidden {
+        top: -200px; /* Hide header */
+    }
+    
+    .logo img {
+        max-width: 145px;
+    }
+    
+    
+    nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 15px;
+        background-color: white (0, 0, 0, 0.1);
+        padding: 10px;
+        z-index: 20;
+    }
+
+    nav.active {
+        display: flex; /* Show navigation links when active */
+    }
+
+    .toggle-btn {
+        display: block;
+        background: none;
+        border: none;
+        position: relative;
+        cursor: pointer;
+        z-index: 20;
+        right: 10px;
+        font-size: 3em;
+        color: #00a86b;
+    }
+
+    nav.close-btn {
+        background: none;
+        display: block;
+        position: relative;
+        cursor: pointer;
+        z-index: 20;
+        font-size: 2em;
+        color: #00a86b;
+    }
+
+    .filter-buttons .filter-btn {
+        font-size: 0.8em; /* Smaller buttons on mobile */
+        padding: 8px 16px;
+    }
+
+    .service-item button {
+        font-size: 0.9em; /* Smaller button */
+        padding: 8px 16px;
+    }
+}
+
+/* Hide Toggle on Larger Screens */
+@media (min-width: 769px) {
+    nav {
+        display: flex; /* Show navigation links */
+        gap: 20px;
+    }
+
+    .toggle-btn, .close-btn {
+        display: none; /* Do not show toggle on desktop */
+    }
+}
+
