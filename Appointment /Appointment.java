@@ -5,30 +5,28 @@ import java.util.*;
 public class Appointment{
     private String appointmentID; 
     private Customer customer; 
-    private String date; 
     private DateTimeSlot slot; 
     private String status; 
 
 
     //Constructor to make an appointment 
-    public Appointment(String appointmentID, String date, DateTimeSlot slot, String status){
+    public Appointment(String appointmentID, DateTimeSlot slot, String status){
         this.appointmentID = appointmentID;
-        this.date = date; 
-        this.slot = slot; //This should be good for now 
+        this.slot = slot; 
         this.status = status; 
     }
 
 
     public String getID(){
-        return appointmentID;
+        return this.appointmentID;
     }
 
     public DateTimeSlot getSlot(){
-        return slot;
+        return this.slot;
     }
 
     public DateTimeSlot viewAvailableSlots(){
-        return slot;
+        return this.slot;
     }
 
 
@@ -49,7 +47,7 @@ public class Appointment{
            
             this.status = "Confirmed";
             updateCalender();
-            sendConfirmation();
+            sendConfirmation(customer);
 
             System.out.println("Appointment confirmed");
         }
@@ -59,15 +57,14 @@ public class Appointment{
 
     public void sendConfirmation(){
         String msg = "Thank you for confirming your appointment, " + customer.getfirstName() + '!' 
-        + "\nAppointment ID: " + getID() +  "\nDate $" + slot;
+        + "\nAppointment ID: " + getID() +  "\nDate $" + getSlot();
 
         Integration.sendEmail(customer.getEmail(), "Appointment Confirmation", msg);
     }
 
-    public void requestModification(DateTimeSlot slot_mod, Appointment appointment, Customer customer){
-        //Make this so that the customer is attatched as an ID 
-        //if (appoinement.getID()==)
-        this.slot = slot_mod; 
+    public void requestModification(DateTimeSlot slot, Appointment appointment){
+        
+        this.slot = slot; 
 
     }
 
@@ -79,7 +76,7 @@ public class Appointment{
     }
 
     public void sendModConfirm(){
-        String msg = "Thank you for confirming your appointment, " + customer.firstName + '!'; 
+        String msg = "Thank you for confirming your appointment, " + customer.getfirstName() + '!'; 
         msg += "\nAppointment ID: " + appointmentID;
         msg += "\nDate $" + slot;
 
@@ -92,7 +89,7 @@ public class Appointment{
         String msg = "A reminder of your appointment";
         msg += "\n Date and Time : " + slot;
         
-        Integration.sendEmail(customer.getEmail(), "Dear" + customer.firstName + msg);
+        Integration.sendEmail(customer.getEmail(), "Dear" + customer.getfirstName() + msg);
 
     }
 
