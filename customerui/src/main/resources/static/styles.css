@@ -1,0 +1,456 @@
+/* Integrating unique font*/
+@font-face {
+    font-family: 'LEMONMILK';
+    src: url('font/LEMONMILK-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+    background: url('images/spa-bed.jpg') no-repeat center center; /* Background image */
+    background-size: cover; /* Make it fill the viewport */
+    position: relative; /* Position for content overlay */
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between; /* Align logo on the left, nav on the right */
+    align-items: center;
+    padding: 20px 50px;
+    position: absolute; /* Overlay on top of the hero */
+    width: 100%;
+    z-index: 10;
+}
+
+/* Logo */
+.logo img {
+    width: 200px; /* Increase logo size */
+}
+
+/* Navigation Links */
+nav {
+    display: flex; /* Horizontal layout */
+    align-items: center; /* Vertically align links */
+    gap: 15px; 
+}
+
+nav a {
+    margin: 0 15px; /* Even spacing between links */
+    color: white; /* Default white text */
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 400;
+    transition: color 0.3s ease; /* Smooth transition for hover */
+}
+
+nav a:hover {
+    color: #00a86b; /* Jade green on hover */
+}
+
+.cart-icon {
+    width: 30px; /* Adjust cart icon size */
+    height: 30px;
+    order: 8; /* Default: Last in desktop layout */
+    display: inline-block; /* Ensure visibility */
+    color: #004d33;
+}
+
+
+/* Hero Content */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white; /* White text for hero content */
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    font-family: 'LEMONMILK', sans-serif; /* Apply LEMONMILK font */
+}
+
+/* Circle Navigation Arrow */
+.scroll-indicator {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Circle size */
+    height: 50px; /* Circle size */
+    color: #ffffff; /* Arrow color */
+    border-radius: 50%; /* Makes it a circle */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.5em; /* Size of the arrow */
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add slight shadow for effect */
+    transition: all 0.3s ease-in-out; /* Smooth hover transition */
+}
+
+.scroll-indicator:hover {
+    background-color: #00a86b; /* Jade green background on hover */
+    color: white; /* White arrow on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Media Queries for Mobile Screens */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px 20px;
+    }
+
+    .logo img {
+        max-width: 150px;
+    }
+
+    nav {
+        display: none; /* Hide navigation links on small screens */
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 60px;
+        right: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 20;
+    }
+
+    nav a {
+        color: white;
+        font-size: 1.2em;
+        margin: 10px 0;
+    }
+
+    nav.active {
+        display: flex; /* Show navigation links when active */
+    }
+
+    .menu-toggle, .close-toggle {
+        display: block; /* Show menu toggle for mobile */
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2em;
+        cursor: pointer;
+        position: relative;
+        z-index: 20;
+    }
+
+    .cart-icon {
+        order: 1; /* Ensure cart comes before navigation */
+        margin-right: 15px; /* Space between cart and menu toggle */
+    }
+
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+
+    .scroll-indicator {
+        font-size: 1.2em;
+    }
+}
+
+/* Hide Toggle on Larger Screens */
+@media (min-width: 769px) {
+    nav {
+        display: flex; /* Show navigation links */
+        gap: 20px;
+    }
+
+    .menu-toggle, .close-toggle {
+        display: none; /* Do not show toggle on desktop */
+    }
+}
+
+section {
+    margin-bottom: 100px; /* Adds spacing between each section */
+    padding: 20px; /* Optional: Adds some padding inside each section */
+    box-sizing: border-box; /* Ensures consistent padding */
+}
+
+#nextPage1, #page-next-2, #nextPage3, #nextPage4 {
+    margin-bottom: 120px; /* Larger spacing between these specific sections */
+    border-top: 1px solid #e0e0e0; /* Optional: Add a top border for clear division */
+}
+
+.hero .circular-button {
+    position: static; /* Prevent unexpected relative/absolute behavior */
+}
+
+/* Grid Layout for Next Page (Mobile First)*/
+@media (orientation: portrait) {
+.next-page-grid {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    height: auto; /* Adjust height for content */
+}
+
+/* Text and Second Image Centered */
+.text-content {
+    text-align: center;
+}
+
+.text-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: 'LEMONMILK', sans-serif; /* LEMONMILK font for the title */
+    color: #004d33; /* Green color */
+}
+
+.text-content p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.image-right, .image-left {
+    width: 100%; /* Make images responsive */
+    text-align: center;
+    position: relative; /* Allows circular button positioning */
+}
+
+.image-right img, .image-left img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Circular Button */
+.circular-button {
+    position: absolute;
+    bottom: 10%; /* Position at the bottom of the container */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-30%, 0); /* Horizontal centering */
+    width: 150px; /* Increase circle size for visibility */
+    height: 150px; /* Match height for perfect circle */
+    font-size: 1.1em; 
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #004d33; /* Thicker border for visibility */
+    background-color: transparent; /* Transparent background */
+    text-decoration: none; /* Remove underline */
+    border-radius: 50%; /* Perfect circle */
+    color: #004d33; /* Green text color */
+    pointer-events: auto; /* Ensure it's clickable */
+}
+
+.circular-button:hover {
+    background-color: #00462e; /* Darker jade green on hover */
+    color: #ffffff; /* Turn Text white*/
+    transform: translate(-50%,0); /* Slightly larger on hover */
+}
+}
+
+
+
+@media (orientation: landscape) {
+    .next-page-grid {
+        flex-direction: row; /* Align items horizontally */
+        flex-wrap: wrap; /* Allow wrapping if items don't fit */
+        justify-content: space-evenly; /* Distribute evenly across the row */
+        align-items: center; /* Vertically center content */
+    }
+
+    .text-content {
+        grid-column: 1; /* Place in the left column */
+        grid-row: 1; /* Place in the first row */
+        text-align: center; /* Center align text */
+        margin-top: -460px; /* Move content higher */
+    }
+
+    .text-content h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        font-family: 'LEMONMILK', sans-serif; /* LEMONMILK font for the title */
+        color: #004d33; /* Green color */
+    }
+    
+    .text-content p {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+        color: black;
+    }
+
+     /* First Image with Space Around */
+    .image-right {
+        grid-column: 2 / 3; /* Second column */
+        grid-row: 1 / 2; /* First row */
+        margin: 20px; /* Space from top and sides */
+    }
+
+    .image-right img {
+        width: 100%; /* Responsive width */
+        max-height: 100%; /* Maintain aspect ratio */
+        object-fit: contain; /* Ensure full image is visible */
+        display: block; /* Prevent inline spacing issues */
+    } 
+    
+    
+    /* Second Image Centered */
+    .image-left {
+        grid-column: 1; /* Place in the left column */
+        grid-row: 2; /* Second row */
+        display: flex; /* Flex for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Align vertically towards the top of the row */
+        position: relative; /* Enable absolute positioning for child elements */
+        width:80%;
+    }
+
+    .image-left img {
+        width: 100%; /* Responsive width */
+        object-fit: cover; /* Maintain aspect ratio */
+        max-height:90%;
+    }
+
+   .circular-button {
+        position: absolute; /* Position relative to the image */
+        top: -8%; /* move button above top edge*/
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, 0); /* Keep horizontal centering */
+        width: 200px; /* Increase circle size for visibility */
+        height: 200px; /* Match height for perfect circle */
+        border: 3px solid #004d33; /* Thicker border for visibility */
+        background-color: transparent; /* Transparent background */
+        color: #004d33; /* Green text color */
+        border-radius: 40%; /* Perfect circle */
+        display: flex; /* Center text inside */
+        justify-content: center; /* Center text horizontally */
+        align-items: center; /* Center text vertically */
+        font-size: 1.2em; /* Slightly larger font size */
+        font-weight: bold;
+        text-decoration: none; /* Remove underline */
+        z-index: 10; /* Ensure it's above the image */
+        pointer-events: auto; /* Ensure it's clickable */
+    }
+
+    .circular-button:hover {
+        background-color: #00462e; /* Darker jade green on hover */
+        color: #ffffff; /* Turn Text white*/
+        transform: translate(-50%,0); /* Slightly larger on hover */
+    }
+}
+
+
+
+
+/* Tablet and Larger Screens */
+@media (min-width: 768px) {
+    .next-page-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        grid-template-rows: auto 1fr; /* First row auto-adjusts, second row gets remaining space */
+        gap: 10px; /* Space between elements */
+        height: 90vh; /* Adjusted height */
+        align-items: center; /* Center vertically */
+        padding: 30px; /* Add padding for spacing around the grid */
+    }
+
+    .text-content {
+        grid-column: 1; /* Place in the left column */
+        grid-row: 1; /* Place in the first row */
+        text-align: center; /* Center align text */
+        margin-top: -500px; /* Move content higher */
+    }
+
+    .text-content h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        font-family: 'LEMONMILK', sans-serif; /* LEMONMILK font for the title */
+        color: #004d33; /* Green color */
+    }
+    
+    .text-content p {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+        color: black;
+    }
+
+   /* First Image with Space Around */
+    .image-right {
+        grid-column: 2 / 3; /* Second column */
+        grid-row: 1 / 2; /* First row */
+        margin: 20px; /* Space from top and sides */
+    }
+
+    .image-right img {
+        width: 65%; /* Responsive width */
+        max-height: 65%; /* Maintain aspect ratio */
+        object-fit: contain; /* Ensure full image is visible */
+        display: block; /* Prevent inline spacing issues */
+    } 
+    
+    
+    /* Second Image Centered */
+    .image-left {
+        grid-column: 1; /* Place in the left column */
+        grid-row: 2; /* Second row */
+        display: flex; /* Flex for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: flex-end; /* Align vertically towards the top of the row */
+        position: relative; /* Enable absolute positioning for child elements */
+        margin-top: -500px; /* Move the image upward more */
+    }
+
+    .image-left img {
+        width: 80%; /* Responsive width */
+        max-width: 400px; /* Larger image size */
+        object-fit: cover; /* Maintain aspect ratio */
+        position: relative; /* Parent for button */
+    }
+
+    .circular-button {
+        top: auto; /* Reset top */
+        bottom: 90%; /* Position the button above the image (fractionally overlapping) */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, 0); /* Keep horizontal centering */
+        width: 150px; /* Increase circle size for visibility */
+        height: 150px; /* Match height for perfect circle */
+        border: 3px solid #004d33; /* Thicker border for visibility */
+        background-color: transparent; /* Transparent background */
+        color: #004d33; /* Green text color */
+        border-radius: 50%; /* Perfect circle */
+        display: flex; /* Center text inside */
+        justify-content: center; /* Center text horizontally */
+        align-items: center; /* Center text vertically */
+        font-size: 1.2em; /* Slightly larger font size */
+        font-weight: bold;
+        text-decoration: none; /* Remove underline */
+        z-index: 10; /* Ensure it's above the image */
+        pointer-events: auto; /* Ensure it's clickable */
+    }
+
+    .circular-button:hover {
+        background-color: #00462e; /* Darker jade green on hover */
+        color: #ffffff; /* Turn Text white*/
+    }
+}
+
+
+
+
+

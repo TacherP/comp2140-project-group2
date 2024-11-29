@@ -1,0 +1,253 @@
+/* Specific styles for nextPage2.html */
+@media (orientation: portrait) {
+.page-next-2 .next-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-rows: auto; /* Adjust height dynamically */
+    gap: 20px; /* Space between grid items */
+    align-items: center; /* Vertically center content */
+    padding: 20px; /* Add padding around the grid */
+}
+
+.page-next-2 .image-right {
+    grid-column: 2; /* Place in the second column */
+    text-align: center; /* Center the image horizontally */
+}
+
+.page-next-2 .image-right img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; /* Ensure the image is fully visible */
+}
+
+.page-next-2 .text-content {
+    grid-column: 1; /* Place in the first column */
+    text-align: center; /* Center align the text */
+    position: relative; /* Allows circular button positioning */
+}
+
+.page-next-2 .text-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: 'LEMONMILK', sans-serif;
+    color: #004d33;
+}
+
+.page-next-2 .text-content p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.page-next-2 .circular-button {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    bottom: 10%; /* Position at the bottom of the container */
+    width: 200px; /* Circle size */
+    height: 200px; /* Match height for perfect circle */
+    border: 1px solid #004d33; /* Thicker border for visibility */
+    background-color: transparent; /* Transparent background */
+    color: #004d33; /* Green text color */
+    border-radius: 50%; /* Perfect circle */
+    display: flex; /* Center text inside */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    font-size: 1.1em; /* Slightly larger font size */
+    font-weight: bold;
+    text-decoration: none; /* Remove underline */
+    margin-top: 20px auto 0; /* Center horizontally and add spacing above the button */
+    pointer-events: auto; /* Ensure it's clickable */
+}
+
+.page-next-2 .circular-button:hover {
+    background-color: #00462e; /* Darker jade green on hover */
+    color: #ffffff; /* Turn Text white */
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 10px 15px;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Circle size */
+    height: 50px; /* Circle size */
+    color: #004d33; /* Arrow color */
+    border-radius: 50%; /* Makes it a circle */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.5em; /* Size of the arrow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: #006644;
+    transform: scale(1.1);
+}
+}
+
+@media (orientation: landscape) {
+.page-next-2 .next-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-rows: auto; /* Adjust height dynamically */
+    gap: 20px; /* Space between grid items */
+    align-items: center; /* Vertically center content */
+    padding: 20px; /* Add padding around the grid */
+}
+
+.page-next-2 .image-right {
+    grid-column: 2; /* Place in the second column */
+    text-align: center; /* Center the image horizontally */
+}
+
+.page-next-2 .image-right img {
+    width: 100%; /* Responsive width */
+    max-height: 100%; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure full image is visible */
+    display: block; /* Prevent inline spacing issues */
+}
+
+.page-next-2 .text-content {
+    grid-column: 1; /* Place in the first column */
+    text-align: center; /* Center align the text */
+    position: relative; /* Allows circular button positioning */
+}
+
+.page-next-2 .text-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: 'LEMONMILK', sans-serif;
+    color: #004d33;
+}
+
+.page-next-2 .text-content p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.page-next-2 .circular-button {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    top: 100%; /* Position the button above the image (fractionally overlapping) */
+    width: 200px; /* Circle size */
+    height: 200px; /* Match height for perfect circle */
+    border: 3px solid #004d33; /* Thicker border for visibility */
+    background-color: transparent; /* Transparent background */
+    color: #004d33; /* Green text color */
+    border-radius: 50%; /* Perfect circle */
+    display: flex; /* Center text inside */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    font-size: 1.2em; /* Slightly larger font size */
+    font-weight: bold;
+    text-decoration: none; /* Remove underline */
+    margin-top: 20px auto 0; /* Center horizontally and add spacing above the button */
+    pointer-events: auto; /* Ensure it's clickable */
+}
+
+.page-next-2 .circular-buttn:hover {
+    background-color: #00462e; /* Darker jade green on hover */
+    color: #ffffff; /* Turn Text white */
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 10px 15px;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Circle size */
+    height: 50px; /* Circle size */
+    color: #004d33; /* Arrow color */
+    border-radius: 50%; /* Makes it a circle */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.5em; /* Size of the arrow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: #006644;
+    transform: scale(1.1);
+}
+}
+
+/* Tablet and Larger Screens */
+@media (min-width: 768px) {
+    .page-next-2 .next-page-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two equal columns */
+        grid-template-rows: auto; /* Adjust height dynamically */
+        gap: 20px; /* Space between grid items */
+        align-items: center; /* Vertically center content */
+        padding: 20px; /* Add padding around the grid */
+    }
+    
+    .page-next-2 .image-right {
+        grid-column: 2; /* Place in the second column */
+        text-align: center; /* Center the image horizontally */
+    }
+    
+    .page-next-2 .image-right img {
+        width: 100%; /* Responsive width */
+        max-height: 100%; /* Maintain aspect ratio */
+        object-fit: contain; /* Ensure full image is visible */
+        display: block; /* Prevent inline spacing issues */
+    }
+    
+    .page-next-2 .text-content {
+        grid-column: 1; /* Place in the first column */
+        text-align: center; /* Center align the text */
+        position: relative; /* Allows circular button positioning */
+    }
+    
+    .page-next-2 .text-content h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        font-family: 'LEMONMILK', sans-serif;
+        color: #004d33;
+    }
+    
+    .page-next-2 .text-content p {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+        color: black;
+    }
+    
+    .page-next-2 .circular-button {
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        top: 100%; /* Position the button above the image (fractionally overlapping) */
+        width: 200px; /* Circle size */
+        height: 200px; /* Match height for perfect circle */
+        border: 3px solid #004d33; /* Thicker border for visibility */
+        background-color: transparent; /* Transparent background */
+        color: #004d33; /* Green text color */
+        border-radius: 50%; /* Perfect circle */
+        display: flex; /* Center text inside */
+        justify-content: center; /* Center text horizontally */
+        align-items: center; /* Center text vertically */
+        font-size: 1.2em; /* Slightly larger font size */
+        font-weight: bold;
+        text-decoration: none; /* Remove underline */
+        margin-top: 20px auto 0; /* Center horizontally and add spacing above the button */
+        pointer-events: auto; /* Ensure it's clickable */
+    }
+    
+    .page-next-2 .circular-button:hover {
+        background-color: #00462e; /* Darker jade green on hover */
+        color: #ffffff; /* Turn Text white */
+    }
+
+    #page-next-2 .circular-button {
+        position: relative !important;
+    }
+    
+}
